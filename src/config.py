@@ -36,4 +36,4 @@ CATEGORIES = [
 PRIORITIES = ['Urgent', 'Moyen', 'Faible']
 
 # Google Sheets Configuration
-SHEET_RANGE = 'Sheet1!A:G'  # Adjust based on your sheet structure
+SHEET_RANGE = 'Sheet1!A:H'  # Adjust based on your sheet structure
