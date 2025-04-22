@@ -17,15 +17,17 @@ import logging
 # States for conversation
 CATEGORY = 0
 DESCRIPTION = 1
-PRIORITY = 2
-CONFIRMATION = 3
+IDENTIFIANT = 2
+PRIORITY = 3
+CONFIRMATION = 4
 
 class TicketBot:
     # States for conversation
     CATEGORY = 0
     DESCRIPTION = 1
-    PRIORITY = 2
-    CONFIRMATION = 3
+    IDENTIFIANT = 2
+    PRIORITY = 3
+    CONFIRMATION = 4
 
     def __init__(self):
         self.current_ticket = {}
@@ -102,7 +104,17 @@ class TicketBot:
         return DESCRIPTION
 
     async def description(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Stores the description and asks for priority."""
+        """Stores the description and asks for identifiant."""
+        self.current_ticket['description'] = update.message.text
+        
+        await update.message.reply_text(
+            'Veuillez mettre votre identifiant commcare:',
+            reply_markup=reply_markup
+        )
+        return IDENTIFIANT
+
+     async def identifiant(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Stores the identifiant and asks for priority."""
         self.current_ticket['description'] = update.message.text
         
         keyboard = [[p] for p in PRIORITIES]
@@ -123,12 +135,14 @@ class TicketBot:
             # Escape all special characters for MarkdownV2
             category = self.current_ticket['category'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
             description = self.current_ticket['description'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
+            identifiant = self.current_ticket['category'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
             priority = self.current_ticket['priority'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
         
             confirmation_text = (
                 "Veuillez confirmer les détails de votre ticket\\:\n\n"
                 f"*Catégorie*\\: {category}\n"
                 f"*Description*\\: {description}\n"
+                f"*Identifiant*\\: {identifiant}\n"
                 f"*Priorité*\\: {priority}\n\n"
                 "Répondez 'oui' pour confirmer ou 'non' pour annuler\\."
             )
