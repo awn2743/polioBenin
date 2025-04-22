@@ -1,0 +1,27 @@
+services:
+  - type: worker
+    name: milda-support-bot
+    env: python
+    buildCommand: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+      pip install -e .
+    startCommand: |
+      cd /opt/render/project/src
+      PYTHONPATH=/opt/render/project/src python run.py
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GOOGLE_SHEET_ID
+        sync: false
+      - key: GOOGLE_SHEETS_CREDENTIALS
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: SMTP_EMAIL
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+    autoDeploy: true 

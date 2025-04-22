@@ -1,0 +1,1 @@
+worker: PYTHONPATH=$PWD python run.py

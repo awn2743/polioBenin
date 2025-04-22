@@ -1,0 +1,24 @@
+runtime: python39
+instance_class: F1
+
+env_variables:
+  TELEGRAM_BOT_TOKEN: ""  # Will be set from secret
+  GOOGLE_SHEET_ID: ""     # Will be set from secret
+  ADMIN_EMAIL: "lohassan123@gmail.com"
+
+includes:
+- secret: telegram-bot-token
+  env_var: TELEGRAM_BOT_TOKEN
+- secret: google-sheet-id
+  env_var: GOOGLE_SHEET_ID
+- secret: google-sheets-credentials
+  env_var: GOOGLE_SHEETS_CREDENTIALS
+
+entrypoint: python src/bot.py
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 1
+  min_idle_instances: 1
+  max_idle_instances: 1 
