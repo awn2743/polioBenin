@@ -109,7 +109,7 @@ class TicketBot:
         
         await update.message.reply_text(
             'Veuillez mettre votre identifiant CommCare:',
-            reply_markup=ReplyKeyboardRemove()  # J'ai ajouté ReplyKeyboardRemove() car reply_markup n'était pas défini
+            reply_markup=ReplyKeyboardRemove()  
         )
         return IDENTIFIANT
 
@@ -343,6 +343,7 @@ async def check_resolved_tickets(context):
                         f"📅 Date de création : {ticket['timestamp']}\n"
                         f"📝 Catégorie : {ticket['category']}\n"
                         f"📄 Description : {ticket['description']}\n"
+                        f"📄 Identifiant : {ticket['identifiant']}\n"
                         f"⚡ Priorité : {ticket['priority']}\n\n"
                         "Est-ce que votre problème est effectivement résolu?"
                     )
@@ -458,6 +459,7 @@ def main():
             states={
                 CATEGORY: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot.category)],
                 DESCRIPTION: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot.description)],
+                IDENTIFIANT: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot.identifiant)],
                 PRIORITY: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot.priority)],
                 CONFIRMATION: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot.confirm)]
             },
