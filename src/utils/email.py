@@ -17,6 +17,7 @@ async def send_admin_email(admin_emails, ticket_data):
         f"Numéro de Ticket: {ticket_data['ticket_id']}\n"
         f"Catégorie: {ticket_data['category']}\n"
         f"Description: {ticket_data['description']}\n"
+        f"Identifiant: {ticket_data['identifiant']}\n"
         f"Priorité: {ticket_data['priority']}\n"
         f"Chat ID: {ticket_data.get('chat_id', 'N/A')}\n\n"
         f"Voir tous les tickets ici: {sheet_url}"
