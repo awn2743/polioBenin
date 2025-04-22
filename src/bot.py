@@ -103,7 +103,7 @@ class TicketBot:
         )
         return DESCRIPTION
 
-      async def description(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    async def description(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Stores the description and asks for identifiant."""
         self.current_ticket['description'] = update.message.text
         
