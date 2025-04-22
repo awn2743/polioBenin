@@ -1,4 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
+iffrom telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application, CommandHandler, MessageHandler, 
     filters, ConversationHandler, ContextTypes, CallbackQueryHandler
@@ -108,14 +108,14 @@ class TicketBot:
         self.current_ticket['description'] = update.message.text
         
         await update.message.reply_text(
-            'Veuillez mettre votre identifiant commcare:',
+            'Veuillez mettre votre identifiant CommCare:',
             reply_markup=reply_markup
         )
         return IDENTIFIANT
 
      async def identifiant(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Stores the identifiant and asks for priority."""
-        self.current_ticket['description'] = update.message.text
+        self.current_ticket['identifiant'] = update.message.text
         
         keyboard = [[p] for p in PRIORITIES]
         reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
