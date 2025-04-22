@@ -259,6 +259,7 @@ async def check_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"🎫 *Numéro de Ticket*: {ticket_id}\n"
                 f"📝 *Catégorie*: {ticket_data.get('category', 'N/A')}\n"
                 f"📄 *Description*: {ticket_data.get('description', 'N/A')}\n"
+                f"📄 *Identifiant*: {ticket_data.get('identifiant', 'N/A')}\n"
                 f"⚡ *Priorité*: {ticket_data.get('priority', 'N/A')}\n"
                 f"📊 *Statut*: {ticket_data.get('status', 'N/A')}"
             )
@@ -303,6 +304,7 @@ async def check_resolved_tickets(context):
                 escaped_ticket_id = ticket_id.replace('-', '\\-')
                 category = ticket['category'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
                 description = ticket['description'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
+                identifiant = ticket['identifiant'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
                 priority = ticket['priority'].replace('.', '\\.').replace('-', '\\-').replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('!', '\\!')
                 timestamp = ticket['timestamp'].replace('-', '\\-').replace(':', '\\:')
                 
@@ -313,6 +315,7 @@ async def check_resolved_tickets(context):
                     f"📅 *Date de création* : {timestamp}\n"
                     f"📝 *Catégorie* : {category}\n"
                     f"📄 *Description* : {description}\n"
+                    f"📄 *Identifiant* : {identifiant}\n"
                     f"⚡ *Priorité* : {priority}\n\n"
                     "Est\\-ce que votre problème est effectivement résolu?"
                 )
