@@ -103,17 +103,17 @@ class TicketBot:
         )
         return DESCRIPTION
 
-    async def description(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+      async def description(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Stores the description and asks for identifiant."""
         self.current_ticket['description'] = update.message.text
         
         await update.message.reply_text(
             'Veuillez mettre votre identifiant CommCare:',
-            reply_markup=reply_markup
+            reply_markup=ReplyKeyboardRemove()  # J'ai ajouté ReplyKeyboardRemove() car reply_markup n'était pas défini
         )
         return IDENTIFIANT
 
-     async def identifiant(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    async def identifiant(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Stores the identifiant and asks for priority."""
         self.current_ticket['identifiant'] = update.message.text
         
