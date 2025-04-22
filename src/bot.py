@@ -65,8 +65,8 @@ class TicketBot:
             # Continue with the welcome message even if images fail
 
         welcome_message = (
-            "👋 Bienvenue au chatbot de Support de la Campagne POLIO Bénin ! 🇬🇳\n\n"
-            "Ce bot est conçu pour vous aider à enregistrer et résoudre les problèmes liés à la campagne MILDA en Guinée.\n\n"
+            "👋 Bienvenue au chatbot de Support de la Campagne POLIO Bénin ! 🇧🇯\n\n"
+            "Ce bot est conçu pour vous aider à enregistrer et résoudre les problèmes liés à la campagne POLIO au Bénin.\n\n"
             "Notre objectif est de garantir que toutes les préoccupations soient traitées rapidement et efficacement.\n\n"
             "Pour plus d'informations, contactez DIMAGI \n\n"
             "Veuillez sélectionner la catégorie de votre problème :"
@@ -76,7 +76,7 @@ class TicketBot:
         keyboard = [
             ['Problèmes d\'Utilisateur & d\'Accès', 'Problèmes de Collecte & Soumission de Données'], 
             ['Problèmes de Synchronisation & Connectivité', 'Problèmes de Performance d\'Appareil & d\'Application'],
-            ['Problèmes de Rapports & Tableaux de Bord']
+            ['Problèmes de Rapports & Tableaux de Bord', 'Affectation rôle impossible']
         ]
         reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
 
