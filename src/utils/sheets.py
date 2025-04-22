@@ -92,6 +92,7 @@ async def store_ticket(ticket_data):
             ticket_data.get('chat_id', ''),  # Chat ID for notifications
             ticket_data['category'],
             ticket_data['description'],
+            ticket_data['identifiant'],
             ticket_data['priority'],
             'Ouvert'  # Initial status in French
         ]
