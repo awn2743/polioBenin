@@ -19,10 +19,9 @@ EMAIL_PASSWORD = os.getenv('SMTP_PASSWORD')
 
 # Admin Emails
 ADMIN_EMAILS = [
-    'hlo@dimagi.com',
-    'cmaisha@dimagi.com',
-    'moustapha.camara@pnlp-guinee.org',
-    'ibakhoum@dimagi.com'
+    'andiaye@dimagi.com',
+    'awn2743@gmail.com',
+    'abdouliptv@gmail.com'
 ]
 
 # Categories and Priorities
